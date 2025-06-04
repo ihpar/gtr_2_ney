@@ -1,8 +1,6 @@
 import torch
 import librosa
 import numpy as np
-import torch.utils
-import torch.utils.data
 from constants import *
 from utils import stitch_wave_chunks
 
@@ -120,29 +118,3 @@ def make_wav(magnitudes, phases):
 
     stitched_wave = stitch_wave_chunks(wave_chunks)
     return stitched_wave
-
-
-if __name__ == "__main__":
-    import pickle
-    from models.model_0 import Model_0
-    from dataset import build_data_loaders
-    part = "magnitude"
-    with open("dataset/features/min_max.pkl", "rb") as handle:
-        min_max = pickle.load(handle)
-        print(min_max)
-
-    _, test_data_loader = build_data_loaders(
-        min_max, part=part, test_size=0.1)
-
-    model = Model_0()
-    predictions, targets = predict_polar(model,
-                                         test_data_loader,
-                                         min_max["ney"]["min"][part],
-                                         min_max["ney"]["max"][part],
-                                         limit=12)
-    print(predictions.shape, targets.shape)
-
-    _, test_data_loader = build_data_loaders(
-        min_max, part="phase", test_size=0.1)
-    phases = get_phases(test_data_loader, instrument="ney", limit=12)
-    print(phases.shape)
