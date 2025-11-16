@@ -1,1 +1,1 @@
-# Guitar to Ney
+# Guitar & Ney Hybrid Instrument Sound Design
