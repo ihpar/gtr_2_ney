@@ -2,6 +2,8 @@
 
 Ex:
 
+Hi res wav files [here](https://github.com/ihpar/gtr_2_ney/tree/main/dataset/tests)
+
 Katip Guitar
 
 https://github.com/user-attachments/assets/b27e3fe3-af55-4250-abb4-05623178ce26
